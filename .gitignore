@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#CSS Declarations
+*.css.d.ts
+
 # testing
 /coverage
 
