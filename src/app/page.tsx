@@ -2,10 +2,17 @@
 import CustomIcon from "@/components/CustomIcon";
 import styles from "./page.module.css";
 import SimpleBarChart from "@/components/SimpleBarChart";
-import { mockMonthData } from "@/constants/mockData";
+import {
+  mockMonthData,
+  mockUserData,
+  mockTrafficData,
+  mockSignupLocationData,
+} from "@/constants/mockData";
 import { GoPeople } from "react-icons/go";
 import { mockInsights } from "@/constants/mockInsights";
 import Link from "next/link";
+import Table from "@/components/Table";
+import HorizBarChart from "@/components/HorizBarChart";
 
 export default function Home() {
   return (
@@ -17,8 +24,8 @@ export default function Home() {
 
       <section className={styles.container}>
         <div>
-          <p>
-            100,000 <GoPeople />
+          <p className={styles.headingText}>
+            100,000 <GoPeople fontSize="1.5rem" />
           </p>
           <p>Participants</p>
         </div>
@@ -51,26 +58,44 @@ export default function Home() {
       </section>
       <section className={styles.grid}>
         <article className={styles.container}>
-          <h2>User leaderboard</h2>
-
-          <Link className={styles.linkButton} href="/leaderboard">See leaderboard</Link>
+          <h3>User leaderboard</h3>
+          <Table data={mockUserData} />
+          <Link className={styles.linkButton} href="/leaderboard">
+            See leaderboard
+          </Link>
         </article>
         <article className={styles.container}>
-          <h2>Traffic</h2>
-
-          <Link className={styles.linkButton} href="/leaderboard">
+          <h3>Traffic</h3>
+          <HorizBarChart
+            data={mockTrafficData}
+            barKey="numUsers"
+            axisKey="source"
+          />
+          <Link className={styles.linkButton} href="/traffic">
             See traffic sources
           </Link>
         </article>
         <article className={styles.container}>
-          <h2>Signup location</h2>
-
-          <Link className={styles.linkButton} href="/leaderboard">See all countries</Link>
+          <h3>Signup location</h3>
+          <HorizBarChart
+            data={mockSignupLocationData}
+            barKey="numUsers"
+            axisKey="country"
+          />
+          <Link className={styles.linkButton} href="/countries">
+            See all countries
+          </Link>
         </article>
         <article className={styles.container}>
-          <h2>Behaviour</h2>
-
-          <Link className={styles.linkButton} href="/leaderboard">See all countries</Link>
+          <h3>Behaviour</h3>
+          <HorizBarChart
+            data={mockSignupLocationData}
+            barKey="numUsers"
+            axisKey="country"
+          />
+          <Link className={styles.linkButton} href="/countries">
+            See all countries
+          </Link>
         </article>
       </section>
     </main>

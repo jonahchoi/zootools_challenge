@@ -1,16 +1,27 @@
 import React from "react";
+import styles from "./CustomTooltip.module.css";
+import { TooltipProps } from "recharts";
+import {
+  NameType,
+  ValueType,
+} from "recharts/types/component/DefaultTooltipContent";
 
-const CustomTooltip = (data: any) => {
-  // console.log(data);
-  const { active, payload, label } = data;
+interface CustomTooltipProps {
+  data: TooltipProps<ValueType, NameType>;
+  active: boolean;
+}
 
-  if (active) {
+const CustomTooltip = ({ data, active }: CustomTooltipProps) => {
+  // eslint-disable-next-line
+  const { payload, label } = data;
+
+  if (active && payload && payload[0]) {
     return (
-      <div>
+      <div className={styles.tooltip}>
         <p>
-          <strong>{payload[0].value}</strong> signups
+          <strong>{payload[0].value?.toLocaleString()}</strong> signups
         </p>
-        <p>{label}</p>
+        <p className={styles.date}>{label}</p>
       </div>
     );
   }

@@ -1,9 +1,117 @@
-interface MonthData {
+export interface MonthData {
   date: Date;
   signups: number;
 }
 
 export const mockMonthData: MonthData[] = [
+  {
+    date: new Date("07/24/2023"),
+    signups: 500,
+  },
+  {
+    date: new Date("07/25/2023"),
+    signups: 800,
+  },
+  {
+    date: new Date("07/26/2023"),
+    signups: 500,
+  },
+  {
+    date: new Date("07/27/2023"),
+    signups: 800,
+  },
+  {
+    date: new Date("07/28/2023"),
+    signups: 1200,
+  },
+  {
+    date: new Date("07/29/2023"),
+    signups: 1400,
+  },
+  {
+    date: new Date("07/30/2023"),
+    signups: 1100,
+  },
+  {
+    date: new Date("07/31/2023"),
+    signups: 1300,
+  },
+  {
+    date: new Date("08/01/2023"),
+    signups: 1100,
+  },
+  {
+    date: new Date("08/02/2023"),
+    signups: 800,
+  },
+  {
+    date: new Date("08/03/2023"),
+    signups: 1200,
+  },
+  {
+    date: new Date("08/04/2023"),
+    signups: 1000,
+  },
+  {
+    date: new Date("08/05/2023"),
+    signups: 1100,
+  },
+  {
+    date: new Date("08/06/2023"),
+    signups: 1000,
+  },
+  {
+    date: new Date("08/07/2023"),
+    signups: 1100,
+  },
+  {
+    date: new Date("08/08/2023"),
+    signups: 1200,
+  },
+  {
+    date: new Date("08/09/2023"),
+    signups: 1200,
+  },
+  {
+    date: new Date("08/10/2023"),
+    signups: 1100,
+  },
+  {
+    date: new Date("08/11/2023"),
+    signups: 1300,
+  },
+  {
+    date: new Date("08/12/2023"),
+    signups: 1500,
+  },
+  {
+    date: new Date("08/13/2023"),
+    signups: 1300,
+  },
+  {
+    date: new Date("08/14/2023"),
+    signups: 1500,
+  },
+  {
+    date: new Date("08/15/2023"),
+    signups: 1900,
+  },
+  {
+    date: new Date("08/16/2023"),
+    signups: 1700,
+  },
+  {
+    date: new Date("08/17/2023"),
+    signups: 1900,
+  },
+  {
+    date: new Date("08/18/2023"),
+    signups: 2100,
+  },
+  {
+    date: new Date("08/19/2023"),
+    signups: 2400,
+  },
   {
     date: new Date("08/20/2023"),
     signups: 2300,
@@ -34,7 +142,7 @@ export const mockMonthData: MonthData[] = [
   },
 ];
 
-interface UserData {
+export interface UserData {
   email: string;
   numFriendsInvited: number;
   country: string;
@@ -42,24 +150,24 @@ interface UserData {
 
 export const mockUserData: UserData[] = [
   {
-    email: 'paula.suarze@gmail.com',
+    email: "paula.suarze@gmail.com",
     numFriendsInvited: 6500,
-    country: 'USA'
+    country: "USA",
   },
   {
-    email: 'laura.keney.3@yahoo.com',
+    email: "laura.keney.3@yahoo.com",
     numFriendsInvited: 2300,
-    country: 'Monaco'
+    country: "Monaco",
   },
   {
-    email: 'aaron.michael@arg.org',
+    email: "aaron.michael@arg.org",
     numFriendsInvited: 1200,
-    country: 'Prague'
+    country: "Prague",
   },
   {
-    email: 'jeremy.runner@aol.com',
+    email: "jeremy.runner@aol.com",
     numFriendsInvited: 900,
-    country: 'China'
+    country: "China",
   },
 ];
 
@@ -70,76 +178,59 @@ interface TrafficData {
 
 export const mockTrafficData: TrafficData[] = [
   {
-    source: 'Google',
+    source: "Google",
     numUsers: 30000,
   },
   {
-    source: 'Twitter',
+    source: "Twitter",
     numUsers: 20000,
   },
   {
-    source: 'Facebook',
+    source: "Facebook",
     numUsers: 10000,
   },
   {
-    source: 'Linkedin',
+    source: "Linkedin",
     numUsers: 5000,
   },
   {
-    source: 'YouTube',
+    source: "YouTube",
     numUsers: 3000,
   },
   {
-    source: 'Other',
+    source: "Other",
     numUsers: 2000,
   },
 ];
 
 interface SignupLocationData {
   country: string;
-  city: string;
   numUsers: number;
 }
 
 export const mockSignupLocationData: SignupLocationData[] = [
-  // {
-  //   country: 'United States',
-  //   city: '',
-  //   numUsers: ,
-  // },
-  // {
-  //   country: '',
-  //   city: '',
-  //   numUsers: ,
-  // },
-  // {
-  //   country: '',
-  //   city: '',
-  //   numUsers: ,
-  // },
-  // {
-  //   country: '',
-  //   city: '',
-  //   numUsers: ,
-  // },
-  // {
-  //   country: '',
-  //   city: '',
-  //   numUsers: ,
-  // },
-  // {
-  //   country: '',
-  //   city: '',
-  //   numUsers: ,
-  // },
+  {
+    country: "United States",
+    numUsers: 30000,
+  },
+  {
+    country: "Germany",
+    numUsers: 20000,
+  },
+  {
+    country: "Netherlands",
+    numUsers: 10000,
+  },
+  {
+    country: "India",
+    numUsers: 5000,
+  },
+  {
+    country: "Japan",
+    numUsers: 3000,
+  },
+  {
+    country: "Other",
+    numUsers: 2000,
+  },
 ];
-
-interface BehaviourData {
-  country: string;
-  numUsers: number;
-}
-
-export const mockBehaviourData = [
-
-];
-
