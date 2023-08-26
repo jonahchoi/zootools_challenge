@@ -1,5 +1,6 @@
 import React from "react";
 import { UserData } from "@/constants/mockData";
+import styles from "./Table.module.css";
 
 interface TableProps {
   data: UserData[];
@@ -7,7 +8,8 @@ interface TableProps {
 
 const Table = ({ data }: TableProps) => {
   return (
-    <table>
+    <table className={styles.table}>
+      <caption>User leaderboard</caption>
       <thead>
         <tr>
           <th>Email</th>

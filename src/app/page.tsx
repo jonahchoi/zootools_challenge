@@ -24,10 +24,12 @@ export default function Home() {
 
       <section className={styles.container}>
         <div>
-          <p className={styles.headingText}>
-            100,000 <GoPeople fontSize="1.5rem" />
-          </p>
-          <p>Participants</p>
+          <h2 className={styles.headingText}>
+            <span>
+              100,000 <GoPeople fontSize="1.5rem" />
+            </span>
+            <span className={styles.smallHeading}>Participants</span>
+          </h2>
         </div>
         <SimpleBarChart data={mockMonthData} />
       </section>
@@ -58,7 +60,6 @@ export default function Home() {
       </section>
       <section className={styles.grid}>
         <article className={styles.container}>
-          <h3>User leaderboard</h3>
           <Table data={mockUserData} />
           <Link className={styles.linkButton} href="/leaderboard">
             See leaderboard
