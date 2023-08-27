@@ -9,10 +9,11 @@ import {
 } from "recharts";
 import CustomTooltip from "./CustomTooltip";
 import { format } from "date-fns";
-import { MonthData } from "@/constants/mockData";
+import { TimeData } from "@/constants/mockData";
 
 interface SimpleBarChartProps {
-  data: MonthData[];
+  data: TimeData[];
+  minuteInterval: string;
 }
 
 interface PosObject {
@@ -22,9 +23,19 @@ interface PosObject {
   [key: string]: any;
 }
 
-const SimpleBarChart = ({ data }: SimpleBarChartProps) => {
+const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
   const [posData, setPosData] = useState<PosObject>({ x: 0, y: 0 });
   const [tooltipActive, setTooltipActive] = useState(false);
+
+  const getFormatString = () => {
+    if (minuteInterval === "1h") {
+      return 'hh:mm a';
+    } else if (minuteInterval === "24h") {
+      return 'MMMM d hh:00 a';
+    } else {
+      return 'MMMM d';
+    }
+  }
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -37,7 +48,7 @@ const SimpleBarChart = ({ data }: SimpleBarChartProps) => {
       >
         <CartesianGrid vertical={false} strokeDasharray="1 1" />
         <XAxis
-          dataKey={(data: MonthData) => format(data.date, "MMMM d")}
+          dataKey={(data: TimeData) => format(data.date, getFormatString())}
           scale="point"
           padding={{ left: 10, right: 10 }}
           hide

@@ -57,3 +57,7 @@ h3 {
 a {
   color: inherit;
 }
+
+button {
+  font-weight: 600;
+}

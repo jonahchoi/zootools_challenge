@@ -1,146 +1,67 @@
-export interface MonthData {
+import { addDays, addHours, addMinutes } from "date-fns";
+
+export interface TimeData {
   date: Date;
   signups: number;
 }
 
-export const mockMonthData: MonthData[] = [
-  {
-    date: new Date("07/24/2023"),
-    signups: 500,
-  },
-  {
-    date: new Date("07/25/2023"),
-    signups: 800,
-  },
-  {
-    date: new Date("07/26/2023"),
-    signups: 500,
-  },
-  {
-    date: new Date("07/27/2023"),
-    signups: 800,
-  },
-  {
-    date: new Date("07/28/2023"),
-    signups: 1200,
-  },
-  {
-    date: new Date("07/29/2023"),
-    signups: 1400,
-  },
-  {
-    date: new Date("07/30/2023"),
-    signups: 1100,
-  },
-  {
-    date: new Date("07/31/2023"),
-    signups: 1300,
-  },
-  {
-    date: new Date("08/01/2023"),
-    signups: 1100,
-  },
-  {
-    date: new Date("08/02/2023"),
-    signups: 800,
-  },
-  {
-    date: new Date("08/03/2023"),
-    signups: 1200,
-  },
-  {
-    date: new Date("08/04/2023"),
-    signups: 1000,
-  },
-  {
-    date: new Date("08/05/2023"),
-    signups: 1100,
-  },
-  {
-    date: new Date("08/06/2023"),
-    signups: 1000,
-  },
-  {
-    date: new Date("08/07/2023"),
-    signups: 1100,
-  },
-  {
-    date: new Date("08/08/2023"),
-    signups: 1200,
-  },
-  {
-    date: new Date("08/09/2023"),
-    signups: 1200,
-  },
-  {
-    date: new Date("08/10/2023"),
-    signups: 1100,
-  },
-  {
-    date: new Date("08/11/2023"),
-    signups: 1300,
-  },
-  {
-    date: new Date("08/12/2023"),
-    signups: 1500,
-  },
-  {
-    date: new Date("08/13/2023"),
-    signups: 1300,
-  },
-  {
-    date: new Date("08/14/2023"),
-    signups: 1500,
-  },
-  {
-    date: new Date("08/15/2023"),
-    signups: 1900,
-  },
-  {
-    date: new Date("08/16/2023"),
-    signups: 1700,
-  },
-  {
-    date: new Date("08/17/2023"),
-    signups: 1900,
-  },
-  {
-    date: new Date("08/18/2023"),
-    signups: 2100,
-  },
-  {
-    date: new Date("08/19/2023"),
-    signups: 2400,
-  },
-  {
-    date: new Date("08/20/2023"),
-    signups: 2300,
-  },
-  {
-    date: new Date("08/21/2023"),
-    signups: 2400,
-  },
-  {
-    date: new Date("08/22/2023"),
-    signups: 2500,
-  },
-  {
-    date: new Date("08/23/2023"),
-    signups: 2400,
-  },
-  {
-    date: new Date("08/24/2023"),
-    signups: 2600,
-  },
-  {
-    date: new Date("08/25/2023"),
-    signups: 2800,
-  },
-  {
-    date: new Date("08/26/2023"),
-    signups: 3000,
-  },
-];
+/**
+ * @returns An array of randomized objects that include a date and number of signups.
+ *
+ * @param startDate - The first date/time as a string
+ * @param numPoints - The number of data points to return
+ * @param maxValue - The maximum value that can be randomized
+ * @param interval - The time interval between data points
+**/
+const createMockTimeData = (startDate: string, numPoints: number, maxValue: number, interval: 'day' | 'hour' | 'min') => {
+  let result: TimeData[] = [];
+
+  let curDate = new Date(startDate);
+
+  for(let i = 0; i < numPoints; i++) {
+    let randomSignups = Math.floor(Math.random() * maxValue);
+
+    result.push({
+      date: curDate,
+      signups: randomSignups,
+    });
+
+    if(interval === 'day') {
+      curDate = addDays(curDate, 1);
+    } else if(interval === 'hour') {
+      curDate = addHours(curDate, 1);
+    } else if(interval === 'min') {
+      curDate = addMinutes(curDate, 1);
+    }
+  }
+
+  return result;
+};
+
+
+const mockMonthData = createMockTimeData('07/01/2023', 60, 5000, 'day');
+
+const mockHourData = createMockTimeData('08/28/2023 09:00', 60, 200, 'min');
+
+const mockDayData = createMockTimeData('08/28/2023', 24, 1000, 'hour');
+
+/**
+ * @returns An array of mocked time data, represented as an object.
+ *
+ * @param timeSpan - The amount of time that correlates with each data set.
+ *
+**/
+export const getDataByTimeInterval = (timeSpan: '1h' | '24h' | '30d' | '60d') => {
+  if (timeSpan === "1h") {
+    return mockHourData;
+  } else if (timeSpan === "24h") {
+    return mockDayData;
+  } else if (timeSpan === "30d") {
+    return mockMonthData.slice(30);
+  } else {
+    return mockMonthData;
+  }
+};
 
 export interface UserData {
   email: string;

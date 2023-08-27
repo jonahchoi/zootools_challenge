@@ -13,8 +13,9 @@
   margin: 1rem 0;
 }
 
-.flex {
+.header {
   display: flex;
+  justify-content: space-between;
 }
 
 .grid {

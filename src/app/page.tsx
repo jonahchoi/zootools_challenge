@@ -3,23 +3,36 @@ import CustomIcon from "@/components/CustomIcon";
 import styles from "./page.module.css";
 import SimpleBarChart from "@/components/SimpleBarChart";
 import {
-  mockMonthData,
   mockUserData,
   mockTrafficData,
   mockSignupLocationData,
+  getDataByTimeInterval,
 } from "@/constants/mockData";
 import { GoPeople } from "react-icons/go";
 import { mockInsights } from "@/constants/mockInsights";
 import Link from "next/link";
 import Table from "@/components/Table";
 import HorizBarChart from "@/components/HorizBarChart";
+import ToggleButtons from "@/components/ToggleButtons";
+import { useState } from "react";
+
+const timeSets = ["1h", "24h", "30d", "60d"];
 
 export default function Home() {
+  const [currentMinuteInterval, setCurrentMinuteInterval] =
+    useState<string>("30d");
+
+  const currentTimeData = getDataByTimeInterval(currentMinuteInterval) ;
+
+  const handleClick = (timeFrame: string) => {
+    setCurrentMinuteInterval(timeFrame);
+  };
+
   return (
     <main className={styles.main}>
-      <header className={styles.flex}>
+      <header className={styles.header}>
         <h1>Summer referral competition</h1>
-        <div>select time period</div>
+        <ToggleButtons options={timeSets} afterClick={handleClick} />
       </header>
 
       <section className={styles.container}>
@@ -31,7 +44,7 @@ export default function Home() {
             <span className={styles.smallHeading}>Participants</span>
           </h2>
         </div>
-        <SimpleBarChart data={mockMonthData} />
+        <SimpleBarChart data={currentTimeData} minuteInterval={currentMinuteInterval} />
       </section>
       <section className={styles.container}>
         <h2>ZooTools insights</h2>

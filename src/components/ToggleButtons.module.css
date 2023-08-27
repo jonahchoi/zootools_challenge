@@ -1,0 +1,28 @@
+.container {
+  background-color: var(--container);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.default {
+  color: var(--gray-40);
+  background-color: var(--gray-20);
+  border-radius: var(--border-radius);
+  padding: 0.25rem;
+  width: 3rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.default:hover {
+  background-color: var(--gray-30);
+}
+
+.active {
+  composes: default;
+  background-color: var(--gray-30);
+}
