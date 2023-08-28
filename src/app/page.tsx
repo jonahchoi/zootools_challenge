@@ -8,6 +8,7 @@ import {
   mockSignupLocationData,
   getDataByTimeInterval,
   TimeFrames,
+  timeSets,
 } from "@/constants/mockData";
 import { GoPeople } from "react-icons/go";
 import { mockInsights } from "@/constants/mockInsights";
@@ -16,8 +17,6 @@ import Table from "@/components/Table/Table";
 import HorizBarChart from "@/components/HorizBarChart/HorizBarChart";
 import ToggleButtons from "@/components/ToggleButtons/ToggleButtons";
 import { useState } from "react";
-
-const timeSets: TimeFrames[] = ["1h", "24h", "30d", "60d"];
 
 export default function Home() {
   const [currentMinuteInterval, setCurrentMinuteInterval] =
@@ -80,7 +79,7 @@ export default function Home() {
       <div className={styles.grid}>
         <section className={styles.container}>
           <Table data={mockUserData} />
-          <Link className={styles.linkButton} href="/leaderboard">
+          <Link className={styles.linkButton} href="">
             See leaderboard
           </Link>
         </section>
@@ -94,7 +93,7 @@ export default function Home() {
             barKey="numUsers"
             axisKey="source"
           />
-          <Link className={styles.linkButton} href="/traffic">
+          <Link className={styles.linkButton} href="">
             See traffic sources
           </Link>
         </section>
@@ -111,7 +110,7 @@ export default function Home() {
             barKey="numUsers"
             axisKey="country"
           />
-          <Link className={styles.linkButton} href="/countries">
+          <Link className={styles.linkButton} href="">
             See all countries
           </Link>
         </section>
@@ -128,7 +127,7 @@ export default function Home() {
             barKey="numUsers"
             axisKey="country"
           />
-          <Link className={styles.linkButton} href="/countries">
+          <Link className={styles.linkButton} href="">
             See all countries
           </Link>
         </section>
