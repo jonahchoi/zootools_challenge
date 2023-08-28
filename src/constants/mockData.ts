@@ -7,6 +7,8 @@ export interface TimeData {
 
 export type TimeFrames = "1h" | "24h" | "30d" | "60d";
 
+export const timeSets: TimeFrames[] = ["1h", "24h", "30d", "60d"];
+
 /**
  * @returns An array of randomized objects that include a date and number of signups.
  *

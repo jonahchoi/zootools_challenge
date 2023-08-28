@@ -15,17 +15,16 @@ const CustomTooltip = ({ data, active }: CustomTooltipProps) => {
   // eslint-disable-next-line
   const { payload, label } = data;
 
-  if (active && payload && payload[0]) {
-    return (
-      <div className={styles.tooltip}>
-        <p>
-          <strong>{payload[0].value?.toLocaleString()}</strong> signups
-        </p>
-        <p className={styles.date}>{label}</p>
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div className={styles.tooltip} id="tooltip" style={!active ? {visibility: 'hidden'} : undefined}>
+      <p>
+        <strong>{payload ? payload[0]?.value?.toLocaleString() : 0}</strong> signups
+      </p>
+      <p className={styles.date}>{label}</p>
+    </div>
+  );
+
+  // return null;
 };
 
 export default CustomTooltip;

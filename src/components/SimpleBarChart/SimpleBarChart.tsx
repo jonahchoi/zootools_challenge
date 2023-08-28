@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -57,17 +57,26 @@ const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
           content={(props) => (
             <CustomTooltip data={props} active={tooltipActive} />
           )}
-          position={{ x: posData.x - 57, y: posData.y - 85 }}
+          position={posData}
           isAnimationActive={false}
-          allowEscapeViewBox={{ x: true }}
+          allowEscapeViewBox={{ x: true, y: true }}
         />
         <Bar
           dataKey={"signups"}
           fill="#fed500"
           radius={8}
-          onMouseOver={(data) => {
-            setPosData(data as PosObject);
-            setTooltipActive(true);
+          onMouseEnter={(data) => {
+            const toolTipDiv = document.getElementById('tooltip');
+            if(toolTipDiv) {
+              const toolTipWidth = toolTipDiv?.offsetWidth;
+              const toolTipHeight = toolTipDiv?.offsetHeight;
+              const toolTipXCenter = toolTipWidth / 2;
+              setPosData({
+                x: data.x + (data.width / 2) - toolTipXCenter,
+                y: data.y - toolTipHeight - 20
+              });
+              setTooltipActive(true);
+            }
           }}
           onMouseLeave={() => {
             setTooltipActive(false);
