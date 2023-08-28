@@ -22,6 +22,7 @@ const CustomTooltip = ({
     <div
       className={styles.tooltip}
       id="tooltip"
+      // Tooltip stays rendered so that position can be calculated
       style={!visible ? { visibility: "hidden" } : undefined}
     >
       <p>

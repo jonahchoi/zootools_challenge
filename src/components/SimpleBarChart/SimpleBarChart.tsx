@@ -27,6 +27,7 @@ const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
   const [posData, setPosData] = useState<PosObject>({ x: 0, y: 0 });
   const [tooltipActive, setTooltipActive] = useState(false);
 
+  // Reference https://date-fns.org/v1.29.0/docs/format for formatting options
   const getFormatString = () => {
     if (minuteInterval === "1h") {
       return "hh:mm a";
@@ -64,6 +65,7 @@ const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
           fill="#fed500"
           radius={8}
           onMouseEnter={(data: { x: number; y: number; width: number }) => {
+            // Calculate tooltip position based off width/height to render tooltip above bar
             const toolTipDiv = document.getElementById("tooltip");
             if (toolTipDiv) {
               const toolTipWidth = toolTipDiv?.offsetWidth;
