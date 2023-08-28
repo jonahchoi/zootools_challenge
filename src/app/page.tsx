@@ -68,9 +68,11 @@ export default function Home() {
           <div>
             <h3>Recommendation</h3>
             <ul className={styles.list}>
-              {mockInsights.map((data, i) => (
-                data.recommendation ? <li key={i}>{data.recommendation}</li> : null
-              ))}
+              {mockInsights.map((data, i) =>
+                data.recommendation ? (
+                  <li key={i}>{data.recommendation}</li>
+                ) : null,
+              )}
             </ul>
           </div>
         </div>
@@ -85,7 +87,7 @@ export default function Home() {
         <section className={styles.container}>
           <header className={styles.sectionHeader}>
             <h3>Traffic</h3>
-            <ToggleButtons options={['Source', 'City']} afterClick={() => {}} />
+            <ToggleButtons options={["Source", "City"]} afterClick={() => {}} />
           </header>
           <HorizBarChart
             data={mockTrafficData}
@@ -99,7 +101,10 @@ export default function Home() {
         <section className={styles.container}>
           <header className={styles.sectionHeader}>
             <h3>Signup location</h3>
-            <ToggleButtons options={['Country', 'City']} afterClick={() => {}} />
+            <ToggleButtons
+              options={["Country", "City"]}
+              afterClick={() => {}}
+            />
           </header>
           <HorizBarChart
             data={mockSignupLocationData}
@@ -111,9 +116,12 @@ export default function Home() {
           </Link>
         </section>
         <section className={styles.container}>
-        <header className={styles.sectionHeader}>
+          <header className={styles.sectionHeader}>
             <h3>Behaviour</h3>
-            <ToggleButtons options={['Browsers', 'Decides']} afterClick={() => {}} />
+            <ToggleButtons
+              options={["Browsers", "Decides"]}
+              afterClick={() => {}}
+            />
           </header>
           <HorizBarChart
             data={mockSignupLocationData}
