@@ -7,6 +7,7 @@ import {
   mockTrafficData,
   mockSignupLocationData,
   getDataByTimeInterval,
+  TimeFrames,
 } from "@/constants/mockData";
 import { GoPeople } from "react-icons/go";
 import { mockInsights } from "@/constants/mockInsights";
@@ -16,35 +17,38 @@ import HorizBarChart from "@/components/HorizBarChart";
 import ToggleButtons from "@/components/ToggleButtons";
 import { useState } from "react";
 
-const timeSets = ["1h", "24h", "30d", "60d"];
+const timeSets: TimeFrames[] = ["1h", "24h", "30d", "60d"];
 
 export default function Home() {
   const [currentMinuteInterval, setCurrentMinuteInterval] =
-    useState<string>("30d");
+    useState<TimeFrames>("1h");
 
-  const currentTimeData = getDataByTimeInterval(currentMinuteInterval) ;
+  const currentTimeData = getDataByTimeInterval(currentMinuteInterval);
 
   const handleClick = (timeFrame: string) => {
-    setCurrentMinuteInterval(timeFrame);
+    setCurrentMinuteInterval(timeFrame as TimeFrames);
   };
 
   return (
     <main className={styles.main}>
       <header className={styles.header}>
         <h1>Summer referral competition</h1>
-        <ToggleButtons options={timeSets} afterClick={handleClick} />
+        <div className={styles.smallContainer}>
+          <ToggleButtons options={timeSets} afterClick={handleClick} />
+        </div>
       </header>
 
       <section className={styles.container}>
-        <div>
-          <h2 className={styles.headingText}>
-            <span>
-              100,000 <GoPeople fontSize="1.5rem" />
-            </span>
-            <span className={styles.smallHeading}>Participants</span>
-          </h2>
-        </div>
-        <SimpleBarChart data={currentTimeData} minuteInterval={currentMinuteInterval} />
+        <h2 className={styles.headerStackedText}>
+          <span>
+            100,000 <GoPeople fontSize="1.5rem" />
+          </span>
+          <span className={styles.smallHeadingText}>Participants</span>
+        </h2>
+        <SimpleBarChart
+          data={currentTimeData}
+          minuteInterval={currentMinuteInterval}
+        />
       </section>
       <section className={styles.container}>
         <h2>ZooTools insights</h2>
@@ -71,15 +75,18 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className={styles.grid}>
-        <article className={styles.container}>
+      <div className={styles.grid}>
+        <section className={styles.container}>
           <Table data={mockUserData} />
           <Link className={styles.linkButton} href="/leaderboard">
             See leaderboard
           </Link>
-        </article>
-        <article className={styles.container}>
-          <h3>Traffic</h3>
+        </section>
+        <section className={styles.container}>
+          <header className={styles.sectionHeader}>
+            <h3>Traffic</h3>
+            <ToggleButtons options={['Source', 'City']} afterClick={() => {}} />
+          </header>
           <HorizBarChart
             data={mockTrafficData}
             barKey="numUsers"
@@ -88,9 +95,12 @@ export default function Home() {
           <Link className={styles.linkButton} href="/traffic">
             See traffic sources
           </Link>
-        </article>
-        <article className={styles.container}>
-          <h3>Signup location</h3>
+        </section>
+        <section className={styles.container}>
+          <header className={styles.sectionHeader}>
+            <h3>Signup location</h3>
+            <ToggleButtons options={['Country', 'City']} afterClick={() => {}} />
+          </header>
           <HorizBarChart
             data={mockSignupLocationData}
             barKey="numUsers"
@@ -99,9 +109,12 @@ export default function Home() {
           <Link className={styles.linkButton} href="/countries">
             See all countries
           </Link>
-        </article>
-        <article className={styles.container}>
-          <h3>Behaviour</h3>
+        </section>
+        <section className={styles.container}>
+        <header className={styles.sectionHeader}>
+            <h3>Behaviour</h3>
+            <ToggleButtons options={['Browsers', 'Decides']} afterClick={() => {}} />
+          </header>
           <HorizBarChart
             data={mockSignupLocationData}
             barKey="numUsers"
@@ -110,8 +123,8 @@ export default function Home() {
           <Link className={styles.linkButton} href="/countries">
             See all countries
           </Link>
-        </article>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

@@ -5,6 +5,8 @@ export interface TimeData {
   signups: number;
 }
 
+export type TimeFrames = "1h" | "24h" | "30d" | "60d";
+
 /**
  * @returns An array of randomized objects that include a date and number of signups.
  *
@@ -12,25 +14,30 @@ export interface TimeData {
  * @param numPoints - The number of data points to return
  * @param maxValue - The maximum value that can be randomized
  * @param interval - The time interval between data points
-**/
-const createMockTimeData = (startDate: string, numPoints: number, maxValue: number, interval: 'day' | 'hour' | 'min') => {
-  let result: TimeData[] = [];
+ **/
+const createMockTimeData = (
+  startDate: string,
+  numPoints: number,
+  maxValue: number,
+  interval: "day" | "hour" | "min",
+) => {
+  const result: TimeData[] = [];
 
   let curDate = new Date(startDate);
 
-  for(let i = 0; i < numPoints; i++) {
-    let randomSignups = Math.floor(Math.random() * maxValue);
+  for (let i = 0; i < numPoints; i++) {
+    const randomSignups = Math.floor(Math.random() * maxValue);
 
     result.push({
       date: curDate,
       signups: randomSignups,
     });
 
-    if(interval === 'day') {
+    if (interval === "day") {
       curDate = addDays(curDate, 1);
-    } else if(interval === 'hour') {
+    } else if (interval === "hour") {
       curDate = addHours(curDate, 1);
-    } else if(interval === 'min') {
+    } else if (interval === "min") {
       curDate = addMinutes(curDate, 1);
     }
   }
@@ -38,20 +45,19 @@ const createMockTimeData = (startDate: string, numPoints: number, maxValue: numb
   return result;
 };
 
+const mockMonthData = createMockTimeData("07/01/2023", 60, 5000, "day");
 
-const mockMonthData = createMockTimeData('07/01/2023', 60, 5000, 'day');
+const mockHourData = createMockTimeData("08/28/2023 09:00", 60, 200, "min");
 
-const mockHourData = createMockTimeData('08/28/2023 09:00', 60, 200, 'min');
-
-const mockDayData = createMockTimeData('08/28/2023', 24, 1000, 'hour');
+const mockDayData = createMockTimeData("08/28/2023", 24, 1000, "hour");
 
 /**
  * @returns An array of mocked time data, represented as an object.
  *
  * @param timeSpan - The amount of time that correlates with each data set.
  *
-**/
-export const getDataByTimeInterval = (timeSpan: '1h' | '24h' | '30d' | '60d') => {
+ **/
+export const getDataByTimeInterval = (timeSpan: TimeFrames) => {
   if (timeSpan === "1h") {
     return mockHourData;
   } else if (timeSpan === "24h") {

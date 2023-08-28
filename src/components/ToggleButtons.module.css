@@ -1,18 +1,15 @@
 .container {
-  background-color: var(--container);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns:  1fr;
   gap: 0.5rem;
-  padding: 0.5rem;
 }
 
 .default {
   color: var(--gray-40);
   background-color: var(--gray-20);
   border-radius: var(--border-radius);
-  padding: 0.25rem;
-  width: 3rem;
+  padding: 0.25rem 1rem;
   border: none;
   font-size: 1rem;
   cursor: pointer;

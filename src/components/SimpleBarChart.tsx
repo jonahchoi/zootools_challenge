@@ -29,13 +29,13 @@ const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
 
   const getFormatString = () => {
     if (minuteInterval === "1h") {
-      return 'hh:mm a';
+      return "hh:mm a";
     } else if (minuteInterval === "24h") {
-      return 'MMMM d hh:00 a';
+      return "MMMM d hh:00 a";
     } else {
-      return 'MMMM d';
+      return "MMMM d";
     }
-  }
+  };
 
   return (
     <ResponsiveContainer width="100%" height={300}>
