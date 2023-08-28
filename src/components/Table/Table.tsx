@@ -7,12 +7,6 @@ interface TableProps {
 }
 
 const Table = ({ data }: TableProps) => {
-  // const truncate = (str: string) => {
-  //   if(str.length > 15) {
-  //     return str.slice(0, 15) + '...';
-  //   }
-  //   return str;
-  // }
   return (
     <table className={styles.table}>
       <caption>User leaderboard</caption>
