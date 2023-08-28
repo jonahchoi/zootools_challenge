@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.default {
+  color: var(--gray-40);
+  background-color: var(--gray-20);
+  border-radius: var(--border-radius);
+  padding: 0.25rem 1rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.default:hover {
+  background-color: var(--gray-30);
+}
+
+.active {
+  composes: default;
+  background-color: var(--gray-30);
+}
+
+@media (max-width: 1120px) {
+  .default {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+}

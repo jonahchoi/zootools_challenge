@@ -1,0 +1,24 @@
+.smallSquare {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  aspect-ratio: 1/1;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.positive {
+  composes: smallSquare;
+  background-color: var(--success);
+  color: white;
+}
+.negative {
+  composes: smallSquare;
+  background-color: var(--error);
+  color: white;
+}
+.neutral {
+  composes: smallSquare;
+  background-color: var(--warning);
+}
