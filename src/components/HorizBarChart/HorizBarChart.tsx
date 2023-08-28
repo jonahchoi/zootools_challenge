@@ -1,6 +1,6 @@
 import React from "react";
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import CustomLabel from "./CustomLabel";
+import CustomLabel from "../CustomLabel/CustomLabel";
 
 interface HorizBarChartProps {
   // eslint-disable-next-line

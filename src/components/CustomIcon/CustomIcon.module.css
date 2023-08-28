@@ -2,7 +2,10 @@
   padding: 0.5rem;
   border-radius: var(--border-radius);
   aspect-ratio: 1/1;
-  height: 2em;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .positive {

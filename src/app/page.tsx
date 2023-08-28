@@ -1,7 +1,7 @@
 "use client";
-import CustomIcon from "@/components/CustomIcon";
+import CustomIcon from "@/components/CustomIcon/CustomIcon";
 import styles from "./page.module.css";
-import SimpleBarChart from "@/components/SimpleBarChart";
+import SimpleBarChart from "@/components/SimpleBarChart/SimpleBarChart";
 import {
   mockUserData,
   mockTrafficData,
@@ -12,9 +12,9 @@ import {
 import { GoPeople } from "react-icons/go";
 import { mockInsights } from "@/constants/mockInsights";
 import Link from "next/link";
-import Table from "@/components/Table";
-import HorizBarChart from "@/components/HorizBarChart";
-import ToggleButtons from "@/components/ToggleButtons";
+import Table from "@/components/Table/Table";
+import HorizBarChart from "@/components/HorizBarChart/HorizBarChart";
+import ToggleButtons from "@/components/ToggleButtons/ToggleButtons";
 import { useState } from "react";
 
 const timeSets: TimeFrames[] = ["1h", "24h", "30d", "60d"];
@@ -69,7 +69,7 @@ export default function Home() {
             <h3>Recommendation</h3>
             <ul className={styles.list}>
               {mockInsights.map((data, i) => (
-                <li key={i}>{data.recommendation}</li>
+                data.recommendation ? <li key={i}>{data.recommendation}</li> : null
               ))}
             </ul>
           </div>

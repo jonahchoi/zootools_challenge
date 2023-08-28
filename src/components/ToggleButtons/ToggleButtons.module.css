@@ -23,3 +23,14 @@
   composes: default;
   background-color: var(--gray-30);
 }
+
+@media (max-width: 1120px) {
+  .default {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem
+  }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+}

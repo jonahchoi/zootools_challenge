@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   XAxis,
 } from "recharts";
-import CustomTooltip from "./CustomTooltip";
+import CustomTooltip from "@/components/CustomTooltip/CustomTooltip";
 import { format } from "date-fns";
 import { TimeData } from "@/constants/mockData";
 

@@ -61,3 +61,37 @@ a {
 button {
   font-weight: 600;
 }
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 740px) and (max-width: 1120px) {
+  h1, h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+/* @media (min-width: 740px) and (max-width: 1120px) {
+
+} */
+
+/* Mobile */
+/* @media (max-width: 739px) {
+} */
