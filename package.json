@@ -31,7 +31,6 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/recharts": "^1.8.24",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "prettier": "^3.0.2",

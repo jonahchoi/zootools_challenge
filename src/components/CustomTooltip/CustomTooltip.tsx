@@ -6,19 +6,27 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
 
-interface CustomTooltipProps {
-  data: TooltipProps<ValueType, NameType>;
+type CustomTooltipProps<
+  MyValue extends ValueType,
+  MyName extends NameType,
+> = TooltipProps<MyValue, MyName> & {
   active: boolean;
-}
+};
 
-const CustomTooltip = ({ data, active }: CustomTooltipProps) => {
-  // eslint-disable-next-line
-  const { payload, label } = data;
-
+const CustomTooltip = ({
+  payload,
+  label,
+  active,
+}: CustomTooltipProps<ValueType, NameType>) => {
   return (
-    <div className={styles.tooltip} id="tooltip" style={!active ? {visibility: 'hidden'} : undefined}>
+    <div
+      className={styles.tooltip}
+      id="tooltip"
+      style={!active ? { visibility: "hidden" } : undefined}
+    >
       <p>
-        <strong>{payload ? payload[0]?.value?.toLocaleString() : 0}</strong> signups
+        <strong>{payload ? payload[0]?.value?.toLocaleString() : 0}</strong>{" "}
+        signups
       </p>
       <p className={styles.date}>{label}</p>
     </div>
