@@ -54,7 +54,7 @@ const SimpleBarChart = ({ data, minuteInterval }: SimpleBarChartProps) => {
           hide
         />
         <Tooltip
-          content={<CustomTooltip active={tooltipActive} />}
+          content={<CustomTooltip visible={tooltipActive} />}
           position={posData}
           isAnimationActive={false}
           allowEscapeViewBox={{ x: true, y: true }}

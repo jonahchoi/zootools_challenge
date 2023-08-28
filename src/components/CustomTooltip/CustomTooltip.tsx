@@ -10,19 +10,19 @@ type CustomTooltipProps<
   MyValue extends ValueType,
   MyName extends NameType,
 > = TooltipProps<MyValue, MyName> & {
-  active: boolean;
+  visible: boolean;
 };
 
 const CustomTooltip = ({
   payload,
   label,
-  active,
+  visible,
 }: CustomTooltipProps<ValueType, NameType>) => {
   return (
     <div
       className={styles.tooltip}
       id="tooltip"
-      style={!active ? { visibility: "hidden" } : undefined}
+      style={!visible ? { visibility: "hidden" } : undefined}
     >
       <p>
         <strong>{payload ? payload[0]?.value?.toLocaleString() : 0}</strong>{" "}
