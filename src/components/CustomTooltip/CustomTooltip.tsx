@@ -23,8 +23,6 @@ const CustomTooltip = ({ data, active }: CustomTooltipProps) => {
       <p className={styles.date}>{label}</p>
     </div>
   );
-
-  // return null;
 };
 
 export default CustomTooltip;
